@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { SITE } from "../consts";
 ---
 
 <Layout>
@@ -9,11 +10,11 @@ import Layout from "../layouts/Layout.astro";
       <div class="space-y-5 text-[16px] opacity-90">
         <p>A clean, fast, and lightweight portfolio template built with Astro and Tailwind CSS.</p>
         <p>
-          Astrofolio has everything your modern blog needs: MDX content, SEO-friendly pages,
+          {SITE.title} has everything your modern blog needs: MDX content, SEO-friendly pages,
           feed-ready structure, and simple customization.
         </p>
         <p>
-          Astrofolio is open-source and fully customizable, making it easy to add your own voice and
+          {SITE.title} is open-source and fully customizable, making it easy to add your own voice and
           features.
         </p>
         <p>

@@ -1,15 +1,41 @@
 ---
-import { siteConfig } from "../consts";
+import { SITE, SOCIAL_LINKS } from "../consts";
+import {
+  FaXTwitter,
+  FaGithub,
+  FaInstagram,
+  FaRss,
+  FaLinkedinIn,
+} from "react-icons/fa6";
+import { TbMailFilled } from "react-icons/tb";
 ---
 
 <footer class="mt-16 flex flex-wrap items-center justify-between gap-4 py-8 text-[14px]">
-  <p>&copy; {new Date().getFullYear()} {siteConfig.title}</p>
+  <p class="opacity-70">&copy; {new Date().getFullYear()} {SITE.title}</p>
   <ul class="flex flex-wrap items-center gap-3">
     {
-      siteConfig.socialLinks.map((link) => (
+      SOCIAL_LINKS.map((link) => (
         <li>
-          <a href={link.href} target="_blank" rel="noreferrer" class="transition-opacity hover:opacity-70">
-            {link.label}
+          <a 
+            href={link.href} 
+            target={!link.href.startsWith("mailto:") && !link.href.startsWith("/") ? "_blank" : undefined}
+            rel={!link.href.startsWith("mailto:") && !link.href.startsWith("/") ? "noreferrer" : undefined}
+            class="flex items-center justify-center opacity-70 transition-opacity hover:opacity-100"
+            title={link.label}
+          >
+            {SITE.socialStyle === "icon" ? (
+              <>
+                <span class="sr-only">{link.label}</span>
+                {link.label === "Email" && <TbMailFilled className="size-4" />}
+                {link.label === "X" && <FaXTwitter className="size-4" />}
+                {link.label === "GitHub" && <FaGithub className="size-4" />}
+                {link.label === "Instagram" && <FaInstagram className="size-4" />}
+                {link.label === "LinkedIn" && <FaLinkedinIn className="size-4" />}
+                {link.label === "RSS" && <FaRss className="size-4" />}
+              </>
+            ) : (
+              link.label
+            )}
           </a>
         </li>
       ))
