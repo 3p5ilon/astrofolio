@@ -2,7 +2,7 @@ export const siteConfig = {
   title: "Astrofolio",
   description: "A clean, fast, and lightweight personal blog.",
   author: "epsilon",
-  siteUrl: "https://example.com",
+  siteUrl: "https://astrofolio-template.vercel.app",
   ogImage: "/favicon.svg",
   language: "en",
   navigation: [

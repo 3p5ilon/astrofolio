@@ -12,11 +12,13 @@ interface Props {
 }
 
 const {
-  title = siteConfig.title,
+  title: pageTitle,
   description = siteConfig.description,
   image = siteConfig.ogImage,
   noIndex = false,
 } = Astro.props;
+
+const title = pageTitle ? `${pageTitle} | ${siteConfig.title}` : siteConfig.title;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? siteConfig.siteUrl).toString();
 const ogImageUrl = new URL(image, Astro.site ?? siteConfig.siteUrl).toString();
