@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "katex/dist/katex.min.css";
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --text-main: #171717;
+  --bg-main: #f2f1ec;
+  --bg-muted: #eae9e1;
+  --border-main: #171717;
+  --font-sans: 'Inter', sans-serif;
+}
+
+html.dark {
+  --text-main: #f2f1ec;
+  --bg-main: #171717;
+  --bg-muted: #242424;
+  --border-main: #f2f1ec;
+}
+
+@theme {
+  --font-sans: var(--font-sans);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: normal;
+}
+
+.prose :where(h1) {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.prose :where(h2) {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.prose :where(h3) {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.prose :where(h4) {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.astro-code {
+  background-color: color-mix(in srgb, var(--bg-muted) 88%, var(--bg-main)) !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+html.dark .astro-code {
+  background-color: color-mix(in srgb, var(--bg-muted) 92%, var(--bg-main)) !important;
+}
+
+/*
+  Shiki outputs light colors inline and dark colors in --shiki-dark variables.
+  Force dark token colors when .dark class is active.
+*/
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+}

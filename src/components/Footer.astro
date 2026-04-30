@@ -1,0 +1,18 @@
+---
+import { siteConfig } from "../consts";
+---
+
+<footer class="mt-16 flex flex-wrap items-center justify-between gap-4 py-8 text-[14px]">
+  <p>&copy; {new Date().getFullYear()} {siteConfig.title}</p>
+  <ul class="flex flex-wrap items-center gap-3">
+    {
+      siteConfig.socialLinks.map((link) => (
+        <li>
+          <a href={link.href} target="_blank" rel="noreferrer" class="transition-opacity hover:opacity-70">
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</footer>

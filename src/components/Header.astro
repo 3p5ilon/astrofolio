@@ -1,0 +1,18 @@
+---
+import { siteConfig } from "../consts";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="mb-12 flex flex-wrap items-center justify-between gap-4 pt-12">
+  <a href="/" class="text-[28px] font-medium">{siteConfig.title}</a>
+  <nav aria-label="Main navigation" class="flex items-center gap-5 text-[16px]">
+    {
+      siteConfig.navigation.map((item) => (
+        <a href={item.href} class="transition-opacity hover:opacity-70">
+          {item.label}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </nav>
+</header>

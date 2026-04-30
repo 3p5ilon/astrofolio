@@ -1,0 +1,31 @@
+<button
+  id="theme-toggle"
+  type="button"
+  class="h-3.5 w-3.5 rounded-full bg-current cursor-pointer"
+  aria-label="Toggle dark mode"
+></button>
+
+<script>
+  const root = document.documentElement;
+  const storageKey = "theme-preference";
+  const toggle = document.getElementById("theme-toggle");
+
+  const getPreferredTheme = () => {
+    const stored = localStorage.getItem(storageKey);
+    if (stored === "dark" || stored === "light") return stored;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  const applyTheme = (theme) => {
+    root.classList.toggle("dark", theme === "dark");
+    localStorage.setItem(storageKey, theme);
+  };
+
+  // The initial theme is applied in Layout.astro head to avoid flash.
+  applyTheme(getPreferredTheme());
+
+  toggle?.addEventListener("click", () => {
+    const next = root.classList.contains("dark") ? "light" : "dark";
+    applyTheme(next);
+  });
+</script>
