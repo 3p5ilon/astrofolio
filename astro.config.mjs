@@ -7,9 +7,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 import react from "@astrojs/react";
+import { SITE } from "./src/consts";
 
 export default defineConfig({
-  site: "https://example.com",
+  site: SITE.siteUrl,
   integrations: [mdx(), sitemap(), react()],
   markdown: {
     remarkPlugins: [remarkMath],

@@ -5,11 +5,11 @@ import { formatDate } from "../../utils/date";
 import { SITE } from "../../consts";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
 ---
 
-<Layout title="Blog" description={`Articles and notes from ${SITE.title}.`}>
+<Layout title="Blog" desc={`Articles and notes from ${SITE.title}.`}>
   <section class="space-y-8">
     <h1 class="text-2xl font-medium">Blog</h1>
     <ul class="m-0 list-none space-y-1 p-0">
@@ -21,8 +21,8 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
               class="flex flex-col gap-1 py-2 text-base transition-opacity hover:opacity-70 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
             >
               <span>{post.data.title}</span>
-              <time datetime={post.data.publishDate.toISOString()} class="tabular-nums text-sm opacity-70">
-                {formatDate(post.data.publishDate)}
+              <time datetime={post.data.pubDate.toISOString()} class="tabular-nums text-sm opacity-70">
+                {formatDate(post.data.pubDate)}
               </time>
             </a>
           </li>

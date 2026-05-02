@@ -2,7 +2,7 @@ import type { Site, NavLink, SocialLink } from "./types";
 
 export const SITE: Site = {
   title: "Astrofolio",
-  description: "A clean, fast, and lightweight personal blog.",
+  desc: "A clean, fast, and lightweight personal blog.",
   author: "epsilon",
   siteUrl: "https://astrofolio-template.vercel.app",
   ogImage: "/favicon.svg",
