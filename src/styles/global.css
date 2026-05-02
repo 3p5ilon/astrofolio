@@ -81,6 +81,29 @@ h6 {
   letter-spacing: normal;
 }
 
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after,
+.prose blockquote::before,
+.prose blockquote::after {
+  content: none;
+}
+
+.prose hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem 0;
+  height: auto;
+  overflow: visible;
+}
+
+.prose hr::before {
+  content: "***";
+  font-size: 16px;
+  letter-spacing: 0.25rem;
+  color: var(--text-main);
+  opacity: 0.3;
+}
+
 .astro-code {
   background-color: color-mix(in srgb, var(--bg-muted) 88%, var(--bg-main)) !important;
   border-radius: 0.5rem;
