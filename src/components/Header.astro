@@ -5,7 +5,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 <header class="mb-12 flex flex-wrap items-center justify-between gap-4">
   <a href="/" class="text-[28px] font-medium">{SITE.title}</a>
-  <nav aria-label="Main navigation" class="flex items-center gap-5 text-[16px]">
+  <nav aria-label="Main navigation" class="flex items-center gap-4 text-sm sm:gap-5 sm:text-base">
     {
       NAV_LINKS.map((item) => (
         <a href={item.href} class="transition-opacity hover:opacity-70">
