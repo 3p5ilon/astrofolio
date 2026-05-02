@@ -2,5 +2,5 @@ export const formatDate = (value: Date) =>
   value.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
-    day: "numeric",
+    day: "2-digit",
   });

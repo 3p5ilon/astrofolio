@@ -21,7 +21,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
               class="flex flex-col gap-1 py-2 text-base transition-opacity hover:opacity-70 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
             >
               <span>{post.data.title}</span>
-              <time datetime={post.data.publishDate.toISOString()} class="text-[15px] opacity-70">
+              <time datetime={post.data.publishDate.toISOString()} class="tabular-nums text-sm opacity-70">
                 {formatDate(post.data.publishDate)}
               </time>
             </a>
