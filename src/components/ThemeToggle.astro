@@ -5,27 +5,44 @@
   aria-label="Toggle dark mode"
 ></button>
 
-<script>
-  const root = document.documentElement;
-  const storageKey = "theme-preference";
-  const toggle = document.getElementById("theme-toggle");
+<script is:inline>
 
-  const getPreferredTheme = () => {
+  const storageKey = "theme-preference";
+
+  const getTheme = () => {
     const stored = localStorage.getItem(storageKey);
-    if (stored === "dark" || stored === "light") return stored;
+    if (stored) return stored;
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   };
 
   const applyTheme = (theme) => {
-    root.classList.toggle("dark", theme === "dark");
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.style.colorScheme = theme;
     localStorage.setItem(storageKey, theme);
   };
 
-  // The initial theme is applied in Layout.astro head to avoid flash.
-  applyTheme(getPreferredTheme());
+  applyTheme(getTheme());
 
-  toggle?.addEventListener("click", () => {
-    const next = root.classList.contains("dark") ? "light" : "dark";
-    applyTheme(next);
-  });
+  const initToggle = () => {
+    const toggle = document.getElementById("theme-toggle");
+    toggle?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      applyTheme(isDark ? "light" : "dark");
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToggle);
+  } else {
+    initToggle();
+  }
+
+  const cleanupHover = () => {
+    document.querySelectorAll("ul a:hover").forEach((link) => {
+      link.style.opacity = "";
+    });
+  };
+
+  document.addEventListener("touchstart", cleanupHover, { passive: true });
 </script>
